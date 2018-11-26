@@ -19,5 +19,13 @@ def ordering(request):
 		parsed_numbers.append(number)
 
 	ordered_numbers = sorted(parsed_numbers)
-	import pdb; pdb.set_trace()
-	return HttpResponse(str(ordered_numbers))
+	#import pdb; pdb.set_trace() #esta linea permite hacer un debug delicioso
+	return JsonResponse({'Numbers':ordered_numbers})
+
+def access(request,name,age):
+	if age < 12:
+		message = '{}, no tienes la edad suficiente para poder acceder a platzigram'.format(name)
+	else:
+		message = 'Bienvenido a platzigram, {}'.format(name)
+
+	return HttpResponse(message)
