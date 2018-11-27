@@ -10,19 +10,19 @@
     <br><br>
     <div class="container">
       <div class="row">
-        <div class="col s12 m4 offset-m4">
+        <div class="col s12 m6 offset-m3">
           {% for post in posts %}
             <div class="card">
               <div class="card-action">
                 <div class="row valing-wrapper">
-                  <div class="col s3">
-                    <img src="{{post.user.picture}}" alt="" class="circle responsive-img">
-                  </div>
-                  <div class="col s9">
-                    <a href="#">
+                  <a href="#">
+                    <div class="col s3">
+                      <img src="{{post.user.picture}}" alt="" class="circle responsive-img">
+                    </div>
+                    <div class="col s9">
                       {{post.user.name}}
-                    </a>
-                  </div>
+                    </div>
+                  </a>
                 </div>
               </div>
               <div class="card-image">
