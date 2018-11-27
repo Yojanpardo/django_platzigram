@@ -23,4 +23,4 @@ POSTS = [
 ]
 
 def posts(request):
-    return render(request,'posts.html',{'posts':POSTS})
+    return render(request,'posts/posts.html',{'posts':POSTS})

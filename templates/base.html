@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    {% include "nav.html" %}
+    <div class="container">
+      {% block container %}
+      {% endblock %}
+    </div>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+  </body>
+</html>
