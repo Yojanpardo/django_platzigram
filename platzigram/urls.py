@@ -8,10 +8,11 @@ from django.conf import settings
 
 urlpatterns = [
 	path('', local_views.home, name = 'home'),
-    path('admin/', admin.site.urls, name = 'admin'),
+    path('admin/', admin.site.urls, name = 'admin_site'),
     path('hello-world/',local_views.hello_world, name = 'hello_world'),
     path('ordering/',local_views.ordering, name='sort'),
     path('access/<str:name>/<int:age>',local_views.access, name = 'access'),
     path('posts/',posts_views.posts, name = 'posts'),
     path('login/',users_views.login_view, name = 'login'),
+    path('logout/',users_views.logout_view, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

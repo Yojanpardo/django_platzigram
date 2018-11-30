@@ -1,23 +1,25 @@
 {% load static %}
 <div class="navbar-fixed">
-  <nav class="white">
+  <nav class="grey lighten-4">
     <div class="container">
       <div class="nav-wrapper">
         <div class="row">
-          <div class="col s10 m4 offset-m3">
-            <div class="col s2">
-              <a href="#">
-                <img src="{% static 'asets/instagram.png' %}" alt="Platzigram" class="responsive-img">
-              </a>
-            </div>
-            <div class="col s2">
-              <a href="#">
-                <img src="{% static 'asets/default-profile.png' %}" alt="" class="responsive-img">
-              </a>
-            </div>
-          </div>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="collapsible.html" class="black-text">Settings</a></li>
+          <div class="col s1">
+            <a href="#" class="brand-logo">
+              <img src="{% static 'asets/instagram.png' %}" alt="Platzigram" height="30">
+            </a>
+          </div>          
+        <ul id="nav-mobile" class="hide-on-med-and-down">
+          <li>
+            <a href="#" class="" style="padding: 0px 15px;">
+              <i class="material-icons">
+                <img src="{% static 'asets/default-profile.png' %}" alt="" height="30" class="material-icons">
+              </i>
+              
+            </a>      
+          </li>
+          <li><a href="{% url "logout" %}"><i class="material-icons black-text">exit_to_app</i></a></li>
+          <li><a href="/admin" class="black-text">Admin</a></li>
         </ul>
       </div>
       </div>
