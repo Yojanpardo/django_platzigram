@@ -2,37 +2,29 @@
 {% block title %}login{% endblock %}
 {% load static %}
 {% block container %}
+<form action="{% url 'login' %}" method="POST" class="col s12">
   <div class="row">
-    <br><br><br><br><br><br><br><br>
-    <div class="col s12 m6 offset-m3">
-      <p class="center-align">
-        <img src="{% static 'asets/instagram.png' %}" alt="" >
-      </p>
-      {% if error %}
-        <p style='color:red;'>{{ error }}</p>
-      {% else %}
-        <br>
-      {% endif %}
-      <form action="{% url 'login' %}" method="POST" class="col s12">
-        <div class="row">
-          {% csrf_token %}
-          <div class="input-field col s12">
-            <input type="text" name="username" id="username" class="validate"/>
-            <label class="active" for="username">Username</label>
-          </div>
-          <div class="input-field col s12">
-            <input type="password" name="password" id="password" class="validate"/>
-            <label for="password">Password</label>
-          </div>
-          <div class="input-field col s12">
-            <button class="btn waves-effect waves-light col s12 light-blue accent-4" type="submit" name="action">Sign In!
-              <i class="material-icons right">send</i>
-            </button>            
-          </div>
-        </div>
-      </form>
+    {% if error %}
+      <p style='color:red;'>{{ error }}</p>
+    {% else %}
+      <br>
+    {% endif %}
+    {% csrf_token %}
+    <div class="input-field col s12">
+      <input type="text" name="username" id="username" class="validate"/>
+      <label class="active" for="username">Username</label>
+    </div>
+    <div class="input-field col s12">
+      <input type="password" name="password" id="password" class="validate"/>
+      <label for="password">Password</label>
+    </div>
+    <div class="input-field col s12">
+      <button class="btn waves-effect waves-light col s12 light-blue accent-4" type="submit" name="action">Sign In!
+        <i class="material-icons right">send</i>
+      </button>            
     </div>
   </div>
+</form>
 {% endblock %}
 {% block scripts %}
 <script>

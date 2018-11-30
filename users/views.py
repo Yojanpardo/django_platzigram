@@ -16,6 +16,9 @@ def login_view(request):
 	    	return render(request, 'users/login.html', {'error':'Nombre de usuario o contraseña invalidos'})
     return render(request,'users/login.html')
 
+def sign_up_view(request):
+	return render(request, 'users/sign_up.html')
+
 @login_required
 def logout_view(request):
 	logout(request)

@@ -10,8 +10,15 @@
   </head>
   <body class="grey lighten-4">
     <div class="container">
-      {% block container %}
-      {% endblock %}
+      <div class="row">
+        <div class="col s12 m6 offset-m3" style="margin-top:10%;">
+          <p class="center-align">
+            <img src="{% static 'asets/instagram.png' %}" alt="" >
+          </p>
+          {% block container %}
+          {% endblock %}
+        </div>
+      </div>
     </div>
     <script src="{% static 'js/materialize.min.js' %}"></script>
     <script
