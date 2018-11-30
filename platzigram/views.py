@@ -1,5 +1,6 @@
 #Django
 from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render
 
 #utilities
 from datetime import datetime
@@ -29,3 +30,6 @@ def access(request,name,age):
 		message = 'Bienvenido a platzigram, {}'.format(name)
 
 	return HttpResponse(message)
+
+def home(request):
+	return render(request,'home.html')

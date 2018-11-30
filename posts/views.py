@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 POSTS = [
     {
@@ -22,5 +22,6 @@ POSTS = [
     }
 ]
 
+@login_required
 def posts(request):
     return render(request,'posts/posts.html',{'posts':POSTS})

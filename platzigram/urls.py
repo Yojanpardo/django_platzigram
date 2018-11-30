@@ -7,10 +7,11 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('hello-world/',local_views.hello_world),
-    path('ordering/',local_views.ordering),
-    path('access/<str:name>/<int:age>',local_views.access),
-    path('posts/',posts_views.posts),
-    path('login/',users_views.login_view),
+	path('', local_views.home, name = 'home'),
+    path('admin/', admin.site.urls, name = 'admin'),
+    path('hello-world/',local_views.hello_world, name = 'hello_world'),
+    path('ordering/',local_views.ordering, name='sort'),
+    path('access/<str:name>/<int:age>',local_views.access, name = 'access'),
+    path('posts/',posts_views.posts, name = 'posts'),
+    path('login/',users_views.login_view, name = 'login'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

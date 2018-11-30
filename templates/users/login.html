@@ -5,19 +5,30 @@
   <div class="row">
     <br><br><br><br><br><br><br><br>
     <div class="col s12 m6 offset-m3">
-      <div class="card">
-        <div class="card-content">
-          <p class="center-align">
-            <img src="{% static 'asets/instagram.png' %}" alt="" >
-          </p>
-          <p>Platzigram es una red social muy aspera que fue hecha por mi jejejeje.
-            Aquí puedes encontrar los posts de tus amigos y todas esas weas.</p>
+      <p class="center-align">
+        <img src="{% static 'asets/instagram.png' %}" alt="" >
+      </p>
+      {% if error %}
+        <p style='color:red;'>{{ error }}</p>
+      {% else %}
+        <br>
+      {% endif %}
+      <form action="{% url 'login' %}" method="POST" class="col s12">
+        <div class="row">
+          {% csrf_token %}
+          <div class="input-field col s12">
+            <input type="text" placeholder="Username" name="username" id="username" class="validate"/>
+            <label class="active" for="username">Username</label>
+          </div>
+          <div class="input-field col s12">
+            <input type="password" placeholder="Password" name="password" id="password" class="validate"/>
+            <label for="password">Password</label>
+          </div>
+          <button name="submit">sign in</button>
         </div>
-        <div class="card-action">
-          <a href="#"><strong>Login</strong></a>
-          <a href="#" class="right"><strong>Sign up</strong></a>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
 {% endblock %}
+{% block scripts %}
+{% endblock scripts %}

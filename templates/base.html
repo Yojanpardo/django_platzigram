@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
@@ -14,5 +16,8 @@
       {% endblock %}
     </div>
     <script src="{% static 'js/materialize.min.js' %}"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    {% block scripts %}
+    {% endblock scripts %}
   </body>
 </html>
