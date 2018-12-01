@@ -20,13 +20,13 @@ class ProfileAdmin(admin.ModelAdmin):
     )
     search_fields = (
         'user__email',
-        'user__firstname',
+        'user__first_name',
         'user__phone_number'
     )
     list_filter = ('created','modified')
     fieldsets=(
         ('Profile',{
-            'fields': (('user','picture','firstname','lastname'),),
+            'fields': (('user','picture'),),
         }),
         ('Info',{
             'fields': (('website','phone_number','bio'),),
