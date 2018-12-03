@@ -8,6 +8,9 @@
 		<div class="input-field col s12">
 			<input type="text" name="username" id="username" class="validate">
 			<label for="username">Username</label>
+			{% if user_error %}
+			    <span style="color:red;">{{user_error}}</span>
+			{% endif %}
 		</div>
 		<div class="input-field col s12">
 			<input type="email" name="email" id="email" class="validate">

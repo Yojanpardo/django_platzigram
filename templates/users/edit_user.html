@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}
+    Edit user {{request.user.username}}
+{% endblock %}
+{% block container %}
+{% load static %}
+<div class="row">
+	<div class="col s12 m6 offset-m3 l6 offset-l3">
+		<div style="margin-top:2rem;">
+			<h5 class="right-align">@{{user.username}} | {{user.get_full_name}}</h5>
+			{% if form.errors %}
+			    <p>{{form.errors}}</p>
+			{% endif %}
+			<form action="{% url "edit_user" %}" method="POST" enctype="multipart/form-data" class="card-content">
+				{% csrf_token %}
+			  <div class="row valign-wrapper">
+			    <div class="col s2">
+			    	{% if  profile.picture %}
+              <img src="{{profile.picture.url}}" class="circle responsive-img" >   
+            {% else %}
+              <img src="{% static 'asets/default-profile.png' %}" class="circle responsive-img">                
+            {% endif %}
+			    </div>
+			    <div class="col s10 file-field input-field">
+						<div class="btn waves-light light-blue accent-4">
+							<span>Photo</span>
+							<input type="file" name="picture">
+						</div>
+						<div class="file-path-wrapper">
+							<input type="text" class="file-path validate">
+						</div>
+			    </div>
+			  </div>
+		    <div class="input-field col s12">
+		    	<input type="text" class="validate" id="website" name="website" value="{{profile.website}}">
+					<label for="website">Website</label>
+				</div>
+		    <div class="input-field col s12">
+		    	<input type="text" class="validate" id="phone_number" name="phone_number" value="{{profile.phone_number}}">
+					<label for="phone_number">Phone number</label>
+		    </div>
+		    <div class="input-field col s12">
+		    	<textarea name="bio" id="bio" class="materialize-textarea">{{profile.bio}}</textarea>
+					<label for="bio">Biography</label>
+		    </div>
+		    <div class="input-field col s12">
+		      <button class="btn waves-effect waves-light col s12 light-blue accent-4" type="submit" name="action">Update
+		        <i class="material-icons right">send</i>
+		      </button>            
+		    </div>
+			</form>
+		</div>
+	</div>
+</div>
+				
+{% endblock %}
