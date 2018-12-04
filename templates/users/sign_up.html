@@ -5,38 +5,7 @@
 {% block container %}
 	<form action="{% url "sign_up" %}" method="POST">
 		{% csrf_token %}
-		<div class="input-field col s12">
-			<input type="text" name="username" id="username" class="validate">
-			<label for="username">Username</label>
-			{% if user_error %}
-			    <span style="color:red;">{{user_error}}</span>
-			{% endif %}
-		</div>
-		<div class="input-field col s12">
-			<input type="email" name="email" id="email" class="validate">
-			<label for="email">Email</label>
-		</div>
-		<div class="input-field col s12 m6">
-			<input type="text" name="firstname" id="firstname" class="validate">
-			<label for="firstname">First name</label>
-		</div>
-		<div class="input-field col s12 m6">
-			<input type="text" name="lastname" id="lastname" class="validate">
-			<label for="lastname">Last name</label>
-		</div>
-		<div class="input-field col s12 m6">
-			<input type="password" name="password" id="password" class="validate">
-			<label for="password">Password</label>
-		</div>
-		<div class="input-field col s12 m6">
-			<input type="password" name="password_c" id="password_c" class="validate">
-			<label for="password_c">Confirm password</label>
-			{% if confirmation_error %}
-			    <span class="helper-text" style="color:red;">{{confirmation_error}}</span>
-			{% else %}
-				<br>		
-			{% endif %}
-		</div>
+		{{ form }}
       	<button class="btn waves-effect waves-light col s12 light-blue accent-4" type="submit" name="action">Sign up!
         <i class="material-icons right">send</i>
 	</form>
