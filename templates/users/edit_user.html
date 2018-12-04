@@ -8,9 +8,6 @@
 	<div class="col s12 m6 offset-m3 l6 offset-l3">
 		<div style="margin-top:2rem;">
 			<h5 class="right-align">@{{user.username}} | {{user.get_full_name}}</h5>
-			{% if form.errors %}
-			    <p>{{form.errors}}</p>
-			{% endif %}
 			<form action="{% url "edit_user" %}" method="POST" enctype="multipart/form-data" class="card-content">
 				{% csrf_token %}
 			  <div class="row valign-wrapper">
@@ -32,16 +29,34 @@
 			    </div>
 			  </div>
 		    <div class="input-field col s12">
-		    	<input type="text" class="validate" id="website" name="website" value="{{profile.website}}">
-					<label for="website">Website</label>
+		    	<input
+		    	type="text"
+		    	class="validate {% if form.website.errors %}red-text{% endif %}"
+		    	id="website"
+		    	name="website"
+		    	value="{% if form.website.errors %}{{form.website.value}}{% else %}{{profile.website}}{% endif %}">
+					<label for="website" class=" {% if form.website.errors %}red-text{% endif %}">Website</label>
+					<span class="helper-text red-text">{% if form.website.errors %}{% for error in form.website.errors %}{{error}} {% endfor %}{% endif %}</span>
 				</div>
 		    <div class="input-field col s12">
-		    	<input type="text" class="validate" id="phone_number" name="phone_number" value="{{profile.phone_number}}">
+		    	<input
+		    	type="text"
+		    	class="validate {% if form.phone_number.errors %}red-text{% endif %}"
+		    	id="phone_number"
+		    	name="phone_number"
+		    	value="{% if form.phone_number.errors %}{{form.phone_number.value}}{% else %}{{profile.phone_number}}{% endif %}"
+		    	data-length="10">
 					<label for="phone_number">Phone number</label>
+					<span class="helper-text red-text">{% if form.phone_number.errors %}{% for error in form.phone_number.errors %}{{error}} {% endfor %}{% endif %}</span>
 		    </div>
 		    <div class="input-field col s12">
-		    	<textarea name="bio" id="bio" class="materialize-textarea">{{profile.bio}}</textarea>
+		    	<textarea
+		    	name="bio" 
+		    	id="bio" 
+		    	class="materialize-textarea {% if form.bio.errors %}red-text{% endif %}" 
+		    	data-length="255">{% if form.bio.errors %}{{form.bio.value}}{%else%}{{profile.bio}}{% endif %}</textarea>
 					<label for="bio">Biography</label>
+					{% if form.bio.errors %}{% for error in form.bio.errors %}<span class="red-text helper-text">{{error}} </span>{% endfor %}{% endif %}
 		    </div>
 		    <div class="input-field col s12">
 		      <button class="btn waves-effect waves-light col s12 light-blue accent-4" type="submit" name="action">Update
@@ -53,4 +68,11 @@
 	</div>
 </div>
 				
+{% endblock %}
+{% block scripts %}
+    <script>
+    $(document).ready(function() {
+   		$('input#phone_number, textarea#bio').characterCounter();
+  	});
+    </script>
 {% endblock %}
