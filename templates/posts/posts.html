@@ -9,16 +9,16 @@
           <div class="row valing-wrapper">
             <a href="#">
               <div class="col s3">
-                <img src="{{post.user.picture}}" alt="" class="circle responsive-img">
+                <img src="{{post.profile.picture.url}}" alt="" class="circle responsive-img">
               </div>
               <div class="col s9">
-                {{post.user.name}}
+                @{{post.user.username}}
               </div>
             </a>
           </div>
         </div>
         <div class="card-image">
-          <img src="{{post.photo}}">
+          <img src="{{post.photo.url}}">
           <span class="card-title">{{post.title}}</span>
         </div>
         <div class="card-content">

@@ -14,7 +14,7 @@
             <a href="{% url "edit_user" %}">
               <i class="material-icons">
                 {% if  user.profile.picture %}
-                  <img src="{{user.profile.picture.url}}" alt="" height="30" class="circle material-icons">                  
+                  <img src="{{user.profile.picture.url}}" alt="" height="30" class="circle">                  
                 {% else %}
                   <img src="{% static 'asets/default-profile.png' %}" alt="" height="30" class="material-icons">                
                 {% endif %}
@@ -22,7 +22,10 @@
             </a>
           </li>
           <li><a href="{% url "logout" %}"><i class="material-icons black-text">exit_to_app</i></a></li>
-          <li><a href="/admin" class="black-text">Admin</a></li>
+          <li><a href="{% url "create_post" %}"><i class="material-icons black-text">add_a_photo</i></a></li>
+          {% if user.is_staff %}
+            <li><a href="/admin" class="black-text">Admin</a></li>
+          {% endif %}
         </ul>
       </div>
       </div>

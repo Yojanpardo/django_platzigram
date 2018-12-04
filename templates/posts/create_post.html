@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}
+  Create a new post
+{% endblock title %}
+{% load static %}
+{% block container %}
+  <div class="row">
+  	<div class="col s12 m6 offset-m3" style="margin-top:2rem;">
+  		<h5>Create a new post</h5>
+  		<form action="{% url "create_post" %}" class="col s12" method="POST" enctype="multipart/form-data">
+  			{% csrf_token %}
+  			<input type="hidden" value="{{user.pk}}" name="user">
+  			<input type="hidden" value="{{profile.pk}}" name="profile">  			
+  			<div class="row">
+  				<div class="input-field col s12">
+  					<input type="text" name="title" id="title" class="validate {% if form.title.errors %}invalid{% endif %}" value="{% if form.title.errors %}{{form.title.value}}{% endif %}">
+  					<label for="title">Title</label>
+  					{% if form.title.errors %}
+  					{% for error in form.title.errors %}
+  						<span class="red-text helper-text">{{error}} </span>
+  					{% endfor %}
+  					{% endif %}
+  				</div>
+  				<div class="input-field col s12">
+  					<textarea name="description" id="description"class="materialize-textarea {% if form.description.errors %}invalid{% endif %}">{% if form.description.errors %}{{form.description.value}}{% endif %}</textarea>
+  					<label for="description">Description</label>
+  					{% if form.description.errors %}
+  					{% for error in form.description.errors %}
+  						<span class="red-text helper-text">{{error}} </span>
+  					{% endfor %}
+  					{% endif %}
+  				</div>
+  				<div class="file-field input-field col s12">
+  					<div class="btn light-blue accent-4">
+  						<span>Photo</span>
+  						<input type="file" name="photo" value="{% if form.photo.errors %}{{form.photo.value}}{% endif %}">
+  					</div>
+  					<div class="file-path-wrapper {% if form.photo.errors %}invalid{% endif %}"><input type="text" class="file-path validate" value="{% if form.photo.errors %}{{form.photo.value}}{% endif %}"></div>
+  					{% if form.photo.errors %}
+  					{% for error in form.photo.errors %}
+  						<span class="red-text helper-text">{{error}} </span>
+  					{% endfor %}
+  					{% endif %}
+  				</div>
+  				<button class="btn waves-efect waves-light col s6 offset-s3 light-blue accent-4" type="submit" name="action">
+  					Publish!
+  					<i class="material-icons right">send</i>
+  				</button>
+  			</div>
+  		</form>
+  	</div>
+  </div>
+{% endblock container %}
+{% block scripts %}
+    
+{% endblock scripts %}

@@ -11,7 +11,11 @@ urlpatterns = [
     path('hello-world/',local_views.hello_world, name = 'hello_world'),
     path('ordering/',local_views.ordering, name='sort'),
     path('access/<str:name>/<int:age>',local_views.access, name = 'access'),
+    path('welcome/',local_views.home,name='welcome'),
+
     path('',posts_views.posts, name = 'posts'),
+    path('create_post/',posts_views.create_post,name='create_post'),
+    
     path('login/',users_views.login_view, name = 'login'),
     path('logout/',users_views.logout_view, name='logout'),
     path('sign_up/',users_views.sign_up_view, name='sign_up'),

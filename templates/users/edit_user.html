@@ -23,7 +23,7 @@
 							<span>Photo</span>
 							<input type="file" name="picture">
 						</div>
-						<div class="file-path-wrapper">
+						<div class="file-path-wrapper {% if form.picture.errors %}invalid{% endif %}">
 							<input type="text" class="file-path validate">
 						</div>
 			    </div>
@@ -31,7 +31,7 @@
 		    <div class="input-field col s12">
 		    	<input
 		    	type="text"
-		    	class="validate {% if form.website.errors %}red-text{% endif %}"
+		    	class="validate {% if form.website.errors %}invalid{% endif %}"
 		    	id="website"
 		    	name="website"
 		    	value="{% if form.website.errors %}{{form.website.value}}{% else %}{{profile.website}}{% endif %}">
@@ -41,7 +41,7 @@
 		    <div class="input-field col s12">
 		    	<input
 		    	type="text"
-		    	class="validate {% if form.phone_number.errors %}red-text{% endif %}"
+		    	class="validate {% if form.phone_number.errors %}invalid{% endif %}"
 		    	id="phone_number"
 		    	name="phone_number"
 		    	value="{% if form.phone_number.errors %}{{form.phone_number.value}}{% else %}{{profile.phone_number}}{% endif %}"
@@ -53,7 +53,7 @@
 		    	<textarea
 		    	name="bio" 
 		    	id="bio" 
-		    	class="materialize-textarea {% if form.bio.errors %}red-text{% endif %}" 
+		    	class="materialize-textarea {% if form.bio.errors %}invalid{% endif %}" 
 		    	data-length="255">{% if form.bio.errors %}{{form.bio.value}}{%else%}{{profile.bio}}{% endif %}</textarea>
 					<label for="bio">Biography</label>
 					{% if form.bio.errors %}{% for error in form.bio.errors %}<span class="red-text helper-text">{{error}} </span>{% endfor %}{% endif %}
