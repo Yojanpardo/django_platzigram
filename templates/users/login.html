@@ -2,7 +2,7 @@
 {% block title %}login{% endblock %}
 {% load static %}
 {% block container %}
-<form action="{% url 'login' %}" method="POST" class="col s12">
+<form action="{% url 'users:login' %}" method="POST" class="col s12">
   <div class="row">
     {% if error %}
       <p style='color:red;'>{{ error }}</p>

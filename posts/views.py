@@ -2,15 +2,18 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 from .forms import PostForm
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
-
+from django.views.generic import ListView
 # Create your views here.
 
-@login_required
-def posts(request):
-    posts = Post.objects.all().order_by('-created')
-    return render(request,'posts/posts.html',{'posts':posts})
+class PostsView(LoginRequiredMixin,ListView):
+    template_name = 'posts/posts.html'
+    model = Post
+    ordering = '-created'
+    paginate_by = 2
+    context_object_name = 'posts'
+    
 
 @login_required
 def create_post(request):
@@ -18,7 +21,7 @@ def create_post(request):
         form = PostForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('posts')
+            return redirect('posts:posts')
     else:
         form = PostForm()
     return render(

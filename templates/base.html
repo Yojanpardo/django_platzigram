@@ -19,7 +19,7 @@
         <i class="large material-icons">menu</i>
       </a>
       <ul>
-        <li><a class="btn-floating" href="{% url "edit_user" %}"><i class="material-icons">
+        <li><a class="btn-floating" href="{% url "users:edit_user" %}"><i class="material-icons">
           {% if  user.profile.picture %}
             <img src="{{user.profile.picture.url}}" class="circle responsive-img">
           {% else %}
@@ -27,8 +27,8 @@
           {% endif %}
         </i>
         </a></li>
-        <li><a class="btn-floating red" href="{% url "logout" %}"><i class="material-icons">exit_to_app</i></a></li>
-        <li><a class="btn-floating yellow darken-1" href="{% url "create_post" %}"><i class="material-icons">add_a_photo</i></a></li>
+        <li><a class="btn-floating red" href="{% url "users:logout" %}"><i class="material-icons">exit_to_app</i></a></li>
+        <li><a class="btn-floating yellow darken-1" href="{% url "posts:create_post" %}"><i class="material-icons">add_a_photo</i></a></li>
         {% if user.is_staff %}
           <li><a class="btn-floating blue" href="/admin"><i class="material-icons">settings</i></a></li>
         {% endif %}

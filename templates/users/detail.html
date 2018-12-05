@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}
+    @{{user.username}}
+{% endblock title %}
+{% block container %}
+	<div class="row">
+		<div class="col s12">
+		  <div class="card-panel grey lighten-5 z-depth-1">
+		    <div class="row valign-wrapper">
+		      <div class="col s3">
+		        <img src="{{user.profile.picture.url}}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+		      </div>
+		      <div class="col s9">
+		      	<div class="row">
+		      		<div class="col s12">
+		      			<h5>@{{user.username}}
+		      			{% if user == request.user %}
+		      				<a class="waves-effect waves-light btn-small" href="{% url "users:edit_user" %}">Edit user</a></h5>
+		      			{% endif %}
+		      		</div>
+		      	</div>
+		      	<div class="row">
+	      			<strong><p class="col s4 center-align">125 posts</p></strong>
+	      			<strong><p class="col s4 center-align">125 followers</p></strong>
+	      			<strong><p class="col s4 center-align">125 following</p></strong>
+	      			<p class="col s12">
+	      				{{user.profile.bio}}
+	      			</p>
+	      		</div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+	{{posts}}
+{% endblock container %}
+{% block scripts %}
+    
+{% endblock scripts %}

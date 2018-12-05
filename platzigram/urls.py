@@ -1,8 +1,6 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from . import views as local_views
-from posts import views as posts_views
-from users import views as users_views
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -13,11 +11,7 @@ urlpatterns = [
     path('access/<str:name>/<int:age>',local_views.access, name = 'access'),
     path('welcome/',local_views.home,name='welcome'),
 
-    path('',posts_views.posts, name = 'posts'),
-    path('create_post/',posts_views.create_post,name='create_post'),
+    path('',include(('posts.urls','posts'),namespace='posts')),
+    path('users/',include(('users.urls','users'),namespace='users')),
     
-    path('login/',users_views.login_view, name = 'login'),
-    path('logout/',users_views.logout_view, name='logout'),
-    path('sign_up/',users_views.sign_up_view, name='sign_up'),
-    path('edit_user/',users_views.edit_user, name='edit_user'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

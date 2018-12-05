@@ -7,7 +7,7 @@
       <div class="card">
         <div class="card-action">
           <div class="row valing-wrapper">
-            <a href="#">
+            <a href="{% url "users:detail" post.user.username %}">
               <div class="col s3">
                 <img src="{{post.profile.picture.url}}" alt="" class="circle responsive-img">
               </div>

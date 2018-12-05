@@ -3,7 +3,7 @@
     Sign up!
 {% endblock title %}
 {% block container %}
-	<form action="{% url "sign_up" %}" method="POST">
+	<form action="{% url "users:sign_up" %}" method="POST">
 		{% csrf_token %}
 		{{ form }}
       	<button class="btn waves-effect waves-light col s12 light-blue accent-4" type="submit" name="action">Sign up!
