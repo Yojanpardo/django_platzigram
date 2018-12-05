@@ -35,8 +35,9 @@ class SignUpForm(forms.Form):
 		data.pop('password_c')
 
 		user = User.objects.create_user(**data)
-		profile = Profile(User)
+		profile = Profile(user=user)
 		profile.save()
+	
 
 class ProfileForm(forms.Form):
 	website = forms.URLField(max_length=100	, required=True)
