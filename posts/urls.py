@@ -2,7 +2,12 @@ from django.urls import path
 
 from . import views
 
-urlpatterns =[
+urlpatterns=[
+    path(
+        route='post_detail/<int:id>/',
+        view=views.PostDetailView.as_view(),
+        name='detail'
+    ),
     path(
     	route='',
     	view=views.PostsView.as_view(),

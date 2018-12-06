@@ -4,8 +4,13 @@ from django.contrib.auth.decorators import login_required
 from .forms import PostForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 # Create your views here.
+
+class PostDetailView(LoginRequiredMixin, DetailView):
+    template_name = 'posts/detail.html'
+    model = Post
+    context_object_name = 'post'
 
 class PostsView(LoginRequiredMixin,ListView):
     template_name = 'posts/posts.html'
@@ -13,7 +18,7 @@ class PostsView(LoginRequiredMixin,ListView):
     ordering = '-created'
     paginate_by = 2
     context_object_name = 'posts'
-    
+
 
 @login_required
 def create_post(request):

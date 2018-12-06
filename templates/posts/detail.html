@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}
+  {{post.title}}
+{% endblock title %}
+{% block container %}
+  <div class="row">
+  	<div class="col s12 m6 offset-m3">
+  		<div class="card">
+	  		<div class="grey lighten-5 z-depth1 card-action" style="padding:5px 15px;">
+	  			<div class="row valign-wrapper" style="margin-bottom:0;">
+	  				<div class="col s3">
+	  					<a href="{% url "users:detail" post.user.username %}">
+	  						<img src="{{post.user.profile.picture.url}}" alt="" class="circle responsive-img">
+	  					</a>
+	  				</div>
+	  				<div class="col s9">
+	  					<div class="row">
+	  						<span class="col s12">By <a href="{% url "users:detail" post.user.username %}">@{{post.user.username}}</a></span class="col s12">
+	  						<span class="col s12">Created: {{post.created}}</span>
+	  					</div>
+	  				</div>
+	  			</div>
+	  		</div>
+  			<div class="card-image">
+  				<img src="{{post.photo.url}}">
+					<span class="card-title">{{post.title}}</span>
+  			</div>
+  			<div class="card-content">
+  				<p>{{post.description}}</p>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+{% endblock container %}
+{% block scripts %}
+    
+{% endblock scripts %}

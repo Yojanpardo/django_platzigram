@@ -10,6 +10,4 @@ class Post(models.Model):
     photo = models.ImageField(upload_to='posts/photos')
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return '{} by @{}'.format(self.title, self.user.username)
+    
