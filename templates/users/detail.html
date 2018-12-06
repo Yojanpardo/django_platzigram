@@ -32,8 +32,20 @@
 		  </div>
 		</div>
 	</div>
-	{{posts}}
+	<div class="carousel">
+    {% for post in posts %}
+        <a href="{% url "posts:detail" post.pk %}" class="carousel-item">
+          <img src="{{post.photo.url}}"
+            >
+        </a> 
+    {% endfor %}
+  </div>
 {% endblock container %}
 {% block scripts %}
-    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.carousel');
+      var instances = M.Carousel.init(elems);
+    });
+    </script>
 {% endblock scripts %}

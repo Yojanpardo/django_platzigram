@@ -16,7 +16,7 @@ class PostsView(LoginRequiredMixin,ListView):
     template_name = 'posts/posts.html'
     model = Post
     ordering = '-created'
-    #paginate_by = 2
+    paginate_by = 2
     context_object_name = 'posts'
 
 
