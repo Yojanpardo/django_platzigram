@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns=[
     path(
-        route='post_detail/<int:id>/',
+        route='post_detail/<int:pk>/',
         view=views.PostDetailView.as_view(),
         name='detail'
     ),

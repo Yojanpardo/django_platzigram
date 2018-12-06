@@ -19,9 +19,10 @@
           </div>
         </div>
         <div class="card-image">
-          <a href="{% url "posts:detail" post.id %}"></a>
-          <img src="{{post.photo.url}}">
-          <span class="card-title">{{post.title}}</span>
+          <a href="{% url "posts:detail" post.pk %}">
+            <img src="{{post.photo.url}}">
+            <span class="card-title">{{post.title}}</span>
+          </a>
         </div>
         <div class="card-content">
           <p class='truncate'>{{post.description}}</p>
